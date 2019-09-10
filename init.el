@@ -299,7 +299,7 @@
 (global-linum-mode t)
 
 ;; Enable line highlighting
-(hl-line-mode t)
+(global-hl-line-mode t)
 
 ;; Byte compilation helpers
 (defun er-byte-compile-init-dir ()
