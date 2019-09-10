@@ -295,6 +295,16 @@
 (global-set-key (kbd "M-<f12>") 'whitespace-cleanup)
 (global-set-key (kbd "C-c o") 'find-file-in-project-at-point)
 
+(defun x-mark-and-find-definition ()
+  "Set global mark and execute lsp-find-definition"
+  (interactive)
+  (push-mark)
+  (lsp-find-definition)
+  )
+
+(global-set-key (kbd "C-}") 'x-mark-and-find-definition)
+(global-set-key (kbd "C-{") 'pop-global-mark)
+
 ;; Enable line numbers and current line highlighting
 (global-linum-mode t)
 
