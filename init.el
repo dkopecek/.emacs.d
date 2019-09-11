@@ -351,7 +351,7 @@
 
 ;; Handle big files
 (defun x-find-file-with-size-check ()
-  "If a file being opened is large, open in fundamental mode and read-only"
+  "If the file being opened is large, open in a lightweight editing mode."
   (when (> (buffer-size) (* 1024 1024))
     (buffer-disable-undo)
     (fundamental-mode)
