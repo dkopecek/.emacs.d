@@ -348,3 +348,21 @@
 
 ;; Do not use tabs for indentation anywhere
 (setq-default indent-tabs-mode nil)
+
+;; Handle big files
+(defun x-find-file-with-size-check ()
+  "If a file being opened is large, open in fundamental mode and read-only"
+  (when (> (buffer-size) (* 1024 1024))
+    (buffer-disable-undo)
+    (fundamental-mode)
+    (linum-mode -1)
+    (setq bidi-display-reordering nil)
+    (jit-lock-mode nil)
+    (buffer-disable-undo)
+    (set (make-variable-buffer-local 'global-hl-line-mode) nil)
+    (set (make-variable-buffer-local 'line-number-mode) nil)
+    (set (make-variable-buffer-local 'column-number-mode) nil)
+    )
+  )
+
+(add-hook 'find-file-hook 'x-find-file-with-size-check)
